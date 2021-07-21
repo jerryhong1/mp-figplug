@@ -1,0 +1,241 @@
+<head>
+  <meta charset="utf-8"><style>
+@font-face {
+  font-family: HKGrotesk-Medium;
+  src: url("fonts/HKGrotesk-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: HKGrotesk-Bold;
+  src: url("fonts/HKGrotesk-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: HKGrotesk-SemiBold;
+  src: url("fonts/HKGrotesk-SemiBold.otf") format("opentype");
+}
+@import url("https://rsms.me/inter/inter.css");
+
+
+/* reset */
+* { font-family: inherit; line-height: inherit; font-synthesis: none; }
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote,
+body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt,
+em, embed, fieldset, figcaption, figure, footer, form, grid, h1, h2, h3, h4, h5,
+h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, main,
+mark, menu, nav, noscript, object, ol, output, p, pre, q, s, samp, section,
+small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th,
+thead, time, tr, tt, u, ul, var, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a, a:active, a:visited { color: inherit; }
+/* end of reset */
+
+body {
+  background: white;
+  color: #222;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  font-family: 'HK Grotesk', 'Inter', system-ui, -system-ui, sans-serif;
+  font-weight: 500;
+  margin: 12px;
+}
+
+h3 {
+  font-size: 16px/24px;
+  margin: 8px 0px;
+}
+
+p {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+div.selection {
+  width: 40;
+  height: 40;
+  cursor: pointer;
+}
+
+button {
+  box-shadow: 2px 2px 0px #00000080;
+  background: #FF004D;
+  color: white;
+  padding: 6px 8px;
+  font-family: Roboto Mono;
+  font-style: normal;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+button:hover {
+  box-shadow: 4px 4px 0px #000000;
+}
+
+/* button:focus {
+  border: 1px solid #18A0FB;
+} */
+
+div.logo-content>:not(:first-child) {
+  margin-top: 8px;
+}
+
+div.red {
+  background-color: #FF004C;
+}
+
+div.orange {
+  background-color: #FF5C00;
+}
+
+div.yellow {
+  background-color: #FFE500;
+}
+
+div.green {
+  background-color: #64FB73;
+}
+
+div.blue {
+  background-color: #0038FF;
+}
+
+div.purple {
+  background-color: #AD00FF;
+}
+
+div.black {
+  background-color: #000;
+}
+
+div.teal {
+  background-color: #00E0FF;
+}
+
+div.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.grid > div:not(:first-child) {
+    margin-left: 4px;
+}
+
+div.color-selector {
+  margin-bottom: 12px;
+}
+
+p.error {
+  color: #FF004C;
+}
+</style>
+</head>
+<body>
+
+  <h3>School Colors</h3>
+  
+  <div class="color-selector">
+    <p>Primary</p>
+    <p id="Primarytext"></p>
+    <div class="grid" id="primary"></div>
+  </div>
+
+  <div class="color-selector">
+    <p>Secondary</p>
+    <p id="Secondarytext"></p>
+    <div class="grid" id="secondary"></div>
+  </div>
+
+  <!-- <button id="test">Test function</button> -->
+
+  <h3>Logo</h3>
+  <div class="logo-content">
+    <P>After updating your school name in the <b>Editable Digital Logo</b>, click the button below to apply the changes throughout the asset generator.</P>
+    <button id="logo">Update logo</button>
+    <p id="error" class="error"></p>
+  </div>
+
+<script>
+/* mp-asset-generator/build/.figplug-cache/ui.js 0 */
+(function(exports){
+
+'use strict';
+
+var VERSION = "0", DEBUG = false;
+var global=void 0!==global?global:"undefined"!=typeof window?window:this;function _stackTrace(cons){const x={stack:""};if(Error.captureStackTrace){Error.captureStackTrace(x,cons);const p=x.stack.indexOf("\n");if(-1!=p)return x.stack.substr(p+1)}return x.stack}function _parseStackFrame(sf){let m=/^\s*at\s+([^\s]+)\s+\((?:.+\/(src\/[^\:]+)|([^\:]+))\:(\d+)\:(\d+)\)$/.exec(sf);return m?{func:m[1],file:m[2]||m[3],line:parseInt(m[4]),col:parseInt(m[5])}:null}function panic(msg){if(console.error.apply(console,["panic:",msg].concat(Array.prototype.slice.call(arguments,1))),"undefined"==typeof process){let e=new Error(msg);throw e.name="Panic",e}console.error(_stackTrace(panic)),process.exit(2)}function print(){console.log.apply(console,Array.prototype.slice.call(arguments))}const dlog=()=>{};function assert(){}function repr(obj){try{return JSON.stringify(obj,null,2)}catch(_){return String(obj)}}
+
+
+const COLOR_NAMES = [
+    "red",
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "purple",
+    "black",
+    "teal",
+];
+function setPrimary(colorName) {
+    parent.postMessage({
+        pluginMessage: {
+            type: "style",
+            color: colorName,
+            variant: "Primary",
+        },
+    }, "*");
+}
+function setSecondary(colorName) {
+    parent.postMessage({
+        pluginMessage: {
+            type: "style",
+            color: colorName,
+            variant: "Secondary",
+        },
+    }, "*");
+}
+for (const color of COLOR_NAMES) {
+    let primaryDiv = document.createElement("div");
+    document.getElementById("primary").appendChild(primaryDiv);
+    primaryDiv.id = color;
+    primaryDiv.className = `${color} selection`;
+    primaryDiv.onclick = () => {
+        setPrimary(color);
+    };
+    let secondaryDiv = document.createElement("div");
+    document.getElementById("secondary").appendChild(secondaryDiv);
+    secondaryDiv.id = color;
+    secondaryDiv.className = `${color} selection`;
+    secondaryDiv.onclick = () => {
+        setSecondary(color);
+    };
+}
+document.getElementById("logo").onclick = () => {
+    parent.postMessage({ pluginMessage: { type: "logo" } }, "*");
+};
+onmessage = async (event) => {
+    const message = event.data.pluginMessage;
+    console.log("Got this from the plugin", message);
+    if (message.type === "colorChange") {
+        document.getElementById(`${message.variant}text`).innerHTML = `Current color: ${message.color}`;
+    }
+    else if (message.type === "error") {
+        document.getElementById("error").innerHTML = message.message;
+    }
+};
+})(typeof exports != "undefined" ? exports : (typeof global != "undefined" ? global : typeof self != "undefined" ? self : this)["ui"] = {});
+
+
+//#sourceMappingURL=data:application/json;base64,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
+
+</script></body>

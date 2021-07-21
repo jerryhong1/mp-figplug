@@ -1,0 +1,139 @@
+@font-face {
+  font-family: HKGrotesk-Medium;
+  src: url("fonts/HKGrotesk-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: HKGrotesk-Bold;
+  src: url("fonts/HKGrotesk-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: HKGrotesk-SemiBold;
+  src: url("fonts/HKGrotesk-SemiBold.otf") format("opentype");
+}
+@import url("https://rsms.me/inter/inter.css");
+
+
+/* reset */
+* { font-family: inherit; line-height: inherit; font-synthesis: none; }
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote,
+body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt,
+em, embed, fieldset, figcaption, figure, footer, form, grid, h1, h2, h3, h4, h5,
+h6, header, hgroup, hr, html, i, iframe, img, ins, kbd, label, legend, li, main,
+mark, menu, nav, noscript, object, ol, output, p, pre, q, s, samp, section,
+small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th,
+thead, time, tr, tt, u, ul, var, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a, a:active, a:visited { color: inherit; }
+/* end of reset */
+
+body {
+  background: white;
+  color: #222;
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  font-family: 'HK Grotesk', 'Inter', system-ui, -system-ui, sans-serif;
+  font-weight: 500;
+  margin: 12px;
+}
+
+h3 {
+  font-size: 16px/24px;
+  margin: 8px 0px;
+}
+
+p {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+div.selection {
+  width: 40;
+  height: 40;
+  cursor: pointer;
+}
+
+button {
+  box-shadow: 2px 2px 0px #00000080;
+  background: #FF004D;
+  color: white;
+  padding: 6px 8px;
+  font-family: Roboto Mono;
+  font-style: normal;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+button:hover {
+  box-shadow: 4px 4px 0px #000000;
+}
+
+/* button:focus {
+  border: 1px solid #18A0FB;
+} */
+
+div.logo-content>:not(:first-child) {
+  margin-top: 8px;
+}
+
+div.red {
+  background-color: #FF004C;
+}
+
+div.orange {
+  background-color: #FF5C00;
+}
+
+div.yellow {
+  background-color: #FFE500;
+}
+
+div.green {
+  background-color: #64FB73;
+}
+
+div.blue {
+  background-color: #0038FF;
+}
+
+div.purple {
+  background-color: #AD00FF;
+}
+
+div.black {
+  background-color: #000;
+}
+
+div.teal {
+  background-color: #00E0FF;
+}
+
+div.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.grid > div:not(:first-child) {
+    margin-left: 4px;
+}
+
+div.color-selector {
+  margin-bottom: 12px;
+}
+
+p.error {
+  color: #FF004C;
+}
