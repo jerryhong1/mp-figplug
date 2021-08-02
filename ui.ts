@@ -52,9 +52,7 @@ for (const color of COLOR_NAMES) {
 }
 
 document.getElementById("logo")!.onclick = () => {
-    document.body.style.cursor = "wait";
     parent.postMessage({ pluginMessage: { type: "logo" } }, "*");
-    document.body.style.cursor = "default";
 };
 
 // document.getElementById("test")!.onclick = () => {
