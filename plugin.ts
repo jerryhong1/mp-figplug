@@ -5,6 +5,18 @@
 
 /********************* CONSTS, UTIL FUNCTIONS **********************/
 // https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb/5624139#5624139
+
+type Variant = "Primary" | "Secondary";
+type ColorName =
+    | "red"
+    | "orange"
+    | "yellow"
+    | "green"
+    | "blue"
+    | "purple"
+    | "black"
+    | "teal";
+
 const hexToRGB = (hexcolor: string): RGB => {
     var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
     hexcolor = hexcolor.replace(shorthandRegex, function (m, r, g, b) {
@@ -107,13 +119,14 @@ const colorsMatch = (c1: RGB, c2: RGB) => {
     );
 };
 
+// Runs on plugin load to initialize the selected styles.
 const getCurrentStyles = () => {
     // strategies for matching color?
     // 1. saving it in plugin state (disadvantage: depends on local machine, doesn't work on first run)
-    // 2. matching colors to the 100th (disadvantage: color matching depends on a loose epsilon)
+    // 2. matching colors to the 100th (disadvantage: color matching depends on a loose epsilon, potentially allowing room for visual error)
     // 3. saving the color name in a text box (disadvantage: breaks as soon as user messes with canvas)
 
-    // let's go with 2
+    // As you can see with the helpfer function |colorsMatch| I went with 2.
 
     // primary
     let primaryStyle = getStyleByName("Digital / Primary");
@@ -153,9 +166,9 @@ figma.showUI(__html__);
 figma.ui.resize(444, 350);
 getCurrentStyles();
 
-// given a style name (e.g. "Digital / Primary") and an RGB color
+// Given a style name (e.g. "Digital / Primary") and an RGB color,
 // sets that style to that color.
-// if the style doesn't exist, create it
+// If the style doesn't exist, create it
 const setStyle = (styleName: string, color: RGB) => {
     let style = getStyleByName(styleName);
     if (style) {
@@ -173,7 +186,7 @@ const setTextStyles = ({
     variant,
 }: {
     color_name: string;
-    variant: "Primary" | "Secondary";
+    variant: Variant;
 }) => {
     const styleName = `Text / Neutral on ${variant}`;
     const textColorName: "black" | "white" = getContrastYIQ(
@@ -194,7 +207,7 @@ const setTextStyles = ({
     }
 };
 
-function sendColorUpdate(variant, newColorName) {
+function sendColorUpdate(variant: Variant, newColorName: string) {
     figma.ui.postMessage({
         type: "colorChange",
         variant: variant,
@@ -218,11 +231,9 @@ const flattenAllText = (node: BaseNode) => {
 };
 
 // creating an SVG logo component is not advised.
-// it's easy to break the proportions of an SVG, whereas a background image
+// CAUTION: it's easy to break the proportions of an SVG, whereas a background image
 // can be "fit" in the right proportion regardless of the frame size.
 const updateSVGLogo = () => {
-    // TODO: get the relevant node by querying the name "Editable Digital Logo"
-    // for now, let's require that the editable is selected
     let logo;
     const logos = figma.root.findAll(
         (node) =>

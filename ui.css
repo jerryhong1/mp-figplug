@@ -62,6 +62,16 @@ div.selection {
   width: 40;
   height: 40;
   cursor: pointer;
+  transition: 300ms;
+}
+
+div.selected {
+  width: 60;
+  height: 60;
+}
+
+div.selection:hover {
+  box-shadow: 2px 2px 0px #00000080;
 }
 
 button {
@@ -81,9 +91,9 @@ button:hover {
   box-shadow: 4px 4px 0px #000000;
 }
 
-/* button:focus {
+button:focus {
   border: 1px solid #18A0FB;
-} */
+}
 
 div.logo-content>:not(:first-child) {
   margin-top: 8px;

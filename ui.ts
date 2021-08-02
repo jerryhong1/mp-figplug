@@ -36,7 +36,7 @@ function setSecondary(colorName: string) {
 for (const color of COLOR_NAMES) {
     let primaryDiv = document.createElement("div");
     document.getElementById("primary")!.appendChild(primaryDiv);
-    primaryDiv.id = color;
+    primaryDiv.id = `Primary ${color}`;
     primaryDiv.className = `${color} selection`;
     primaryDiv.onclick = () => {
         setPrimary(color);
@@ -44,7 +44,7 @@ for (const color of COLOR_NAMES) {
 
     let secondaryDiv = document.createElement("div");
     document.getElementById("secondary")!.appendChild(secondaryDiv);
-    secondaryDiv.id = color;
+    secondaryDiv.id = `Secondary ${color}`;
     secondaryDiv.className = `${color} selection`;
     secondaryDiv.onclick = () => {
         setSecondary(color);
@@ -52,21 +52,33 @@ for (const color of COLOR_NAMES) {
 }
 
 document.getElementById("logo")!.onclick = () => {
+    document.body.style.cursor = "wait";
     parent.postMessage({ pluginMessage: { type: "logo" } }, "*");
+    document.body.style.cursor = "default";
 };
 
 // document.getElementById("test")!.onclick = () => {
 //     parent.postMessage({ pluginMessage: { type: "test" } }, "*");
 // };
 
+let currentColors = { Primary: undefined, Secondary: undefined };
 // listen for color changes
 onmessage = async (event) => {
     const message = event.data.pluginMessage;
     console.log("Got this from the plugin", message);
     if (message.type === "colorChange") {
-        document.getElementById(
-            `${message.variant}text`
-        )!.innerHTML = `Current color: ${message.color}`;
+        document
+            .getElementById(
+                `${message.variant} ${currentColors[message.variant]}`
+            )
+            ?.classList.remove("selected");
+        currentColors[message.variant] = message.color;
+        document
+            .getElementById(`${message.variant} ${message.color}`)!
+            .classList.add("selected");
+        console.log(
+            document.getElementById(`${message.variant} ${message.color}`)
+        );
     } else if (message.type === "error") {
         document.getElementById("error")!.innerHTML = message.message;
     }
