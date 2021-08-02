@@ -3,9 +3,8 @@
 // a full browser environment (see documentation).
 // import _ from "underscore";
 
-/********************* CONSTS, UTIL FUNCTIONS **********************/
+/********************* CONSTS, UTIL FUNCTIONS, STATE VARIABLES **********************/
 // https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb/5624139#5624139
-
 type Variant = "Primary" | "Secondary";
 type ColorName =
     | "red"
@@ -162,7 +161,6 @@ const getCurrentStyles = () => {
 };
 
 /********************* MAIN CODE **********************/
-
 const initPlugin = () => {
     figma.showUI(__html__);
     figma.ui.resize(444, 350);
@@ -233,12 +231,10 @@ const flattenAllText = (node: BaseNode) => {
     }
 };
 
-// creating an SVG logo component is not advised.
-// CAUTION: it's easy to break the proportions of an SVG, whereas a background image
-// can be "fit" in the right proportion regardless of the frame size.
 const updateSVGLogo = () => {
     let logo;
-    const logos = figma.root.findAll(
+    const firstPage = figma.root.children[0];
+    const logos = firstPage.findAll(
         (node) =>
             node.name === "Editable Digital Logo" &&
             node.parent?.name === "Logos"
@@ -346,12 +342,13 @@ figma.ui.onmessage = (message) => {
         });
         sendColorUpdate(message.variant, message.color);
     } else if (message.type === "logo") {
-        // 1) could export logo from button and then prompt user to reupload
+        // Possible strategies to update logo:
+        // 1) could trigger PNG logo export and then prompt user to reupload
         // exportUpdatedLogo()
         // 2) could create the logo as an SVG, duplicate, flatten, and then delete
         updateSVGLogo();
     } else if (message.type === "test") {
-        // just a playground
+        // this section of code is just a playground to play with specific figma commands
         const nodes = figma.currentPage.findAll(
             (node) => node.type === "FRAME" && node.children.length === 0
         );
