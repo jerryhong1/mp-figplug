@@ -163,7 +163,7 @@ const getCurrentStyles = () => {
 /********************* MAIN CODE **********************/
 const initPlugin = () => {
     figma.showUI(__html__);
-    figma.ui.resize(444, 350);
+    figma.ui.resize(444, 400);
     getCurrentStyles();
 };
 
