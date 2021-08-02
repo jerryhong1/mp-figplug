@@ -4,7 +4,6 @@
 // import _ from "underscore";
 
 /********************* CONSTS, UTIL FUNCTIONS, STATE VARIABLES **********************/
-// https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb/5624139#5624139
 type Variant = "Primary" | "Secondary";
 type ColorName =
     | "red"
@@ -16,6 +15,7 @@ type ColorName =
     | "black"
     | "teal";
 
+// https://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb/5624139#5624139
 const hexToRGB = (hexcolor: string): RGB => {
     var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
     hexcolor = hexcolor.replace(shorthandRegex, function (m, r, g, b) {

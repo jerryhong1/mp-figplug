@@ -49,8 +49,8 @@ body {
 }
 
 h3 {
-  font-size: 16px/24px;
-  margin: 8px 0px;
+  font-size: 16px;
+  margin-bottom: 16px;
 }
 
 p {
@@ -63,6 +63,10 @@ div.selection {
   height: 40;
   cursor: pointer;
   transition: 300ms;
+}
+
+div.school-colors-container {
+  margin-bottom: 32px;
 }
 
 div.selected {
@@ -93,6 +97,19 @@ button:hover {
 
 button:focus {
   border: 1px solid #18A0FB;
+}
+
+div.logo-container {
+  display: flex;
+  flex-direction: row;
+}
+
+div.logo-container>:not(:first-child) {
+  margin-left: 40px;
+}
+
+div.logo-content {
+  max-width: 198px;
 }
 
 div.logo-content>:not(:first-child) {
@@ -142,6 +159,12 @@ div.grid > div:not(:first-child) {
 
 div.color-selector {
   margin-bottom: 12px;
+}
+
+p.color-title {
+  margin-bottom: 12px;
+  font-family: Roboto Mono;
+  font-weight: normal;
 }
 
 p.error {
