@@ -1,3 +1,4 @@
+let currentColors = { Primary: undefined, Secondary: undefined };
 const COLOR_NAMES = [
     "red",
     "orange",
@@ -59,7 +60,6 @@ document.getElementById("logo")!.onclick = () => {
 //     parent.postMessage({ pluginMessage: { type: "test" } }, "*");
 // };
 
-let currentColors = { Primary: undefined, Secondary: undefined };
 // listen for color changes
 onmessage = async (event) => {
     const message = event.data.pluginMessage;

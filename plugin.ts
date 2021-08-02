@@ -162,9 +162,12 @@ const getCurrentStyles = () => {
 };
 
 /********************* MAIN CODE **********************/
-figma.showUI(__html__);
-figma.ui.resize(444, 350);
-getCurrentStyles();
+
+const initPlugin = () => {
+    figma.showUI(__html__);
+    figma.ui.resize(444, 350);
+    getCurrentStyles();
+};
 
 // Given a style name (e.g. "Digital / Primary") and an RGB color,
 // sets that style to that color.
@@ -244,7 +247,7 @@ const updateSVGLogo = () => {
         figma.ui.postMessage({
             type: "error",
             message:
-                "Hmm. Looks like we can't seem to find a unique frame with the name 'Editable Digial Logo'.",
+                "Hmm. Looks like we can't seem to find a unique frame with the name 'Editable Digital Logo'.",
         });
         return;
     }
@@ -354,6 +357,8 @@ figma.ui.onmessage = (message) => {
         );
     }
 };
+
+initPlugin();
 
 // Make sure to close the plugin when you're done. Otherwise the plugin will
 // keep running, which shows the cancel button at the bottom of the screen.
