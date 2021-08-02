@@ -63,6 +63,7 @@ div.selection {
   height: 40;
   cursor: pointer;
   transition: 300ms;
+  transition-timing-function: cubic-bezier(.54,.01,.12,1.18);
 }
 
 div.school-colors-container {
