@@ -186,7 +186,7 @@ const setTextStyles = ({
     color_name,
     variant,
 }: {
-    color_name: string;
+    color_name: ColorName;
     variant: Variant;
 }) => {
     const styleName = `Text / Neutral on ${variant}`;
