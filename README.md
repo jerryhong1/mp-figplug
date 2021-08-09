@@ -2,6 +2,9 @@
 
 This plugin is designed exclusively for the MP Asset Generator Figma file. It automatically sets fill styles and components based on a college's name and brand colors.
 
+https://user-images.githubusercontent.com/7551953/128664990-c96b8c33-63bd-4374-9a88-c84ae78541b2.mov
+
+
 <!-- This plugin is publically available [at this link](https://apple.com). -->
 
 ## Setup
