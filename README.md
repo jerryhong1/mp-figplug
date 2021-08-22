@@ -30,7 +30,7 @@ The relevant code is in the following files:
 -   `ui.ts` populates the HTML canvas and interfaces with `plugin.ts`.
 -   `plugin.ts` interfaces with the Figma file, modifying its styles and components and messaging updates to the UI.
 
-Call the following command in the parent directory:
+Call the following command in the **parent** directory of `mp-asset-generator`:
 
 `figplug build -w mp-asset-generator`
 
