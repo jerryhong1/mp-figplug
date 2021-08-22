@@ -7,7 +7,7 @@ https://user-images.githubusercontent.com/7551953/128664990-c96b8c33-63bd-4374-9
 
 <!-- This plugin is publically available [at this link](https://apple.com). -->
 
-## Setup
+## Setup and Running the Plugin Locally
 
 After cloning the repo on your plugin, open Figma and use the quick actions bar (`Cmd-/`) to call "Create Plugin" (or go to `Plugins > Development > Create Plugin` in the menu bar). 
 
@@ -15,13 +15,14 @@ After cloning the repo on your plugin, open Figma and use the quick actions bar 
 
 Link an existing plugin by choosing the `manifest.json` file within **`mp-asset-generator/build`**. Afterward, to call the plugin, simply type `mp-asset-generator` into the quick actions bar.
 
+## Editing the Plugin
+
 This plugin was built using Rasmus Andersson's [figplug](https://github.com/rsms/figplug). You'll need to install it for your changes to build properly. In the **parent** directory of your local copy of `mp-asset-generator`, run
 
 `npm install -g figplug`
 
 _If figplug doesn't work for you, report it as an issue, and we can move the code to a different framework (e.g. Webpack)._
 
-## Editing the Plugin
 
 The relevant code is in the following files:
 
