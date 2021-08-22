@@ -1,5 +1,6 @@
 { "api": "1.0.0",
   "name": "mp-asset-generator",
   "main": "plugin.js",
-  "ui": "ui.html"
+  "ui": "ui.html",
+  "id": "1010046382930518312"
 }
