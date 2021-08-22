@@ -9,7 +9,11 @@ https://user-images.githubusercontent.com/7551953/128664990-c96b8c33-63bd-4374-9
 
 ## Setup
 
-After cloning the repo on your plugin, open Figma and use the quick actions bar (`Cmd-/`) to call "Create Plugin" (or go to `Plugins > Development > Create Plugin` in the menu bar). Link an existing plugin by choosing the `manifest.json` file within `mp-asset-generator`. Afterward, to call the plugin, simply type `mp-asset-generator` into the quick actions bar.
+After cloning the repo on your plugin, open Figma and use the quick actions bar (`Cmd-/`) to call "Create Plugin" (or go to `Plugins > Development > Create Plugin` in the menu bar). 
+
+<img width="716" alt="Screen Shot 2021-08-22 at 8 56 57 AM" src="https://user-images.githubusercontent.com/7551953/130361722-db8dc4dc-9f7f-408c-b127-3a8d0548e6e3.png">
+
+Link an existing plugin by choosing the `manifest.json` file within **`mp-asset-generator/build`**. Afterward, to call the plugin, simply type `mp-asset-generator` into the quick actions bar.
 
 This plugin was built using Rasmus Andersson's [figplug](https://github.com/rsms/figplug). You'll need to install it for your changes to build properly. In the **parent** directory of your local copy of `mp-asset-generator`, run
 
