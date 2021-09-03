@@ -74,9 +74,6 @@ onmessage = async (event) => {
         document
             .getElementById(`${message.variant} ${message.color}`)!
             .classList.add("selected");
-        console.log(
-            document.getElementById(`${message.variant} ${message.color}`)
-        );
     } else if (message.type === "error") {
         document.getElementById("error")!.innerHTML = message.message;
     }

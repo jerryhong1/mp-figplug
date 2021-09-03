@@ -2,5 +2,8 @@
   "name": "mp-asset-generator",
   "main": "plugin.js",
   "ui": "ui.html",
-  "id": "1010046382930518312"
+  "id": "1015478141131019294",
+  "editorType": [
+  "figma"
+]
 }

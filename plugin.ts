@@ -243,12 +243,21 @@ const updateSVGLogo = () => {
         figma.ui.postMessage({
             type: "error",
             message:
-                "Hmm. Looks like we can't seem to find a unique frame with the name 'Editable Digital Logo'.",
+                "Hmm. Looks like we can't seem to find a unique frame with the name 'Editable Digital Logo'. \
+                If it exists, make sure it's on the first page, nested in the 'Logos' frame.",
         });
         return;
     }
     logo = logos[0];
     const logoParent = logo.parent;
+    if (logo.type !== "GROUP") {
+        figma.ui.postMessage({
+            type: "error",
+            message:
+                "Make sure that the 'Editable Digital Logo' is a group.",
+        });
+        return;
+    }
 
     // update both the print and digital logos
     for (const medium of ["Digital", "Print"]) {
@@ -265,13 +274,16 @@ const updateSVGLogo = () => {
             }
         );
 
-        // if the logo component doesn't exist, create it!
+        // if the logo component doesn't exist, create it. 
+        // otherwise, reset it.
         if (flattenedLogoComponent) {
             for (const node of flattenedLogoComponent.children) {
                 node.remove();
             }
+            flattenedLogoComponent.fills = []
+            flattenedLogoComponent.strokes= []
+            flattenedLogoComponent.effects = []
         } else {
-            // create new component
             flattenedLogoComponent = figma.createComponent();
             logoParent.appendChild(flattenedLogoComponent);
             flattenedLogoComponent.name = `${medium} Logo`;
@@ -279,7 +291,7 @@ const updateSVGLogo = () => {
             flattenedLogoComponent.y = 0;
         }
 
-        // adjust the component so that it's a square
+        // Adjust the component so that it's a square
         flattenedLogoComponent.appendChild(newLogo);
         const componentSize = Math.max(newLogo.width, newLogo.height);
         flattenedLogoComponent.resizeWithoutConstraints(
@@ -293,13 +305,15 @@ const updateSVGLogo = () => {
             // 136px, this should never happen, but it never hurts to edge case.
             newLogo.x = (componentSize - newLogo.width) / 2;
         }
-
-        // flatten all inner layers and change constraints to "scale"
+    
+        // Flatten all inner layers and change constraints to "scale"
         for (let child of newLogo.children) {
             if (child.type === "INSTANCE") {
                 child = child.detachInstance();
             }
-            child.layoutMode = "NONE";
+            if (child.type == "FRAME") {
+                child.layoutMode = "NONE";
+            }
             child.constraints = { horizontal: "SCALE", vertical: "SCALE" };
 
             // for the print version: change all digitally-colored layers to print

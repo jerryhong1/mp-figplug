@@ -109,12 +109,13 @@ div.logo-container>:not(:first-child) {
   margin-left: 40px;
 }
 
-div.logo-content {
-  max-width: 198px;
-}
-
 div.logo-content>:not(:first-child) {
   margin-top: 8px;
+}
+
+p.logo-content {
+  max-width: 198px;
+  font-size:10/11.7
 }
 
 div.red {
