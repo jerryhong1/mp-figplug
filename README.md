@@ -13,7 +13,7 @@ After cloning the repo on your plugin, open Figma and use the quick actions bar 
 
 <img width="716" alt="Screen Shot 2021-08-22 at 8 56 57 AM" src="https://user-images.githubusercontent.com/7551953/130361722-db8dc4dc-9f7f-408c-b127-3a8d0548e6e3.png">
 
-Link an existing plugin by choosing the `manifest.json` file within **`mp-asset-generator/build`** -- NOT `manifest.json` in the main directory. Afterward, to call the plugin, simply type `mp-asset-generator` into the quick actions bar.
+Link an existing plugin by choosing the `manifest.json` file within **`mp-asset-generator/build`** — NOT just `mp-asset-generator` — in the main directory. Afterward, to call the plugin, simply type `mp-asset-generator` into the quick actions bar.
 
 ## Editing the Plugin
 
@@ -30,7 +30,7 @@ The relevant code is in the following files:
 -   `ui.ts` populates the HTML canvas and interfaces with `plugin.ts`.
 -   `plugin.ts` interfaces with the Figma file, modifying its styles and components and messaging updates to the UI.
 
-Call the following command in the parent directory:
+Call the following command in the **parent** directory of `mp-asset-generator`:
 
 `figplug build -w mp-asset-generator`
 
